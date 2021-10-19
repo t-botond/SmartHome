@@ -1,0 +1,151 @@
+<html>
+	<head>
+		<title>
+			SmartHome
+		</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shirk-to-fit=no">
+		<script src="https://kit.fontawesome.com/cc8e1ca7f9.js" crossorigin="anonymous"></script>
+		<link href="/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="/"><i class="fas fa-home"></i> SmartHome</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+						  <a class="nav-link active" aria-current="page" href="/">Főoldal</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/newItem.html">Új kapcsoló</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href="/sleep.html">Alvó időszak</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+		
+		<!-- Kapcsolók -->
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 border rounded">
+					<table class="table">
+						<tr>
+							<td  class = "text-center" colspan="2">
+								<h3>
+									<i class="far fa-lightbulb"></i>
+									Hálószoba
+								</h3>
+							</td>
+						</tr>
+						<tr>
+							<td class = "text-center">
+								<div class="form-check form-switch form-control-lg">
+									<input class="form-check-input" type="checkbox" checked id="switch1">
+									<label class="form-check-label" for="switch1">Kapcsoló</label>
+								</div>
+							</td>
+							<td class = "text-center">
+								<a type="button" class="btn btn-warning" href="modify.html"><i class="fas fa-edit"></i></a>&nbsp;
+								<a type="button" class="btn btn-danger" href="delete.html"><i class="fas fa-trash"></i></a>
+							</td>						
+						</tr>
+					</table>
+				</div>
+				
+				<div class="col-lg-3 col-md-6 border rounded">
+					<table class="table">
+						<tr>
+							<td  class = "text-center" colspan="2">
+								<h3>
+									<i class="far fa-lightbulb"></i>
+									Asztal
+								</h3>
+							</td>
+						</tr>
+						<tr>
+							<td class = "text-center">
+								<div class="form-check form-switch form-control-lg">
+									<input class="form-check-input" type="checkbox" id="switch1">
+									<label class="form-check-label" for="switch1">Kapcsoló</label>
+								</div>
+							</td>
+							<td class = "text-center">
+								<a type="button" class="btn btn-warning" href="modify.html"><i class="fas fa-edit"></i></a>&nbsp;
+								<a type="button" class="btn btn-danger" href="delete.html"><i class="fas fa-trash"></i></a>
+							</td>						
+						</tr>
+					</table>
+				</div>	
+				
+				<div class="col-lg-3 col-md-6 border rounded">
+					<table class="table">
+						<tr>
+							<td  class = "text-center" colspan="2">
+								<h3>
+									<i class="far fa-lightbulb"></i>
+									Földgömb
+								</h3>
+							</td>
+						</tr>
+						<tr>
+							<td class = "text-center">
+								<div class="form-check form-switch form-control-lg">
+									<input class="form-check-input" type="checkbox" checked id="switch1">
+									<label class="form-check-label" for="switch1">Kapcsoló</label>
+								</div>
+							</td>
+							<td class = "text-center">
+								<a type="button" class="btn btn-warning" href="modify.html"><i class="fas fa-edit"></i></a>&nbsp;
+								<a type="button" class="btn btn-danger" href="delete.html"><i class="fas fa-trash"></i></a>
+							</td>						
+						</tr>
+						<tr>
+							<td>
+								<label for="exampleColorInput" class="form-label">Szín választó</label>
+							</td>
+							<td>
+								<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#199CC8" title="Choose your color">
+							</td>
+						</tr>
+					</table>
+					
+				</div>
+				
+				<div class="col-lg-3 col-md-6 border rounded">
+					<table class="table">
+						<tr>
+							<td  class = "text-center" colspan="2">
+								<h3>
+									<i class="fas fa-running"></i>
+									Érzékelő
+								</h3>
+							</td>
+						</tr>
+						<tr>
+							<td class = "text-center">
+								<div class="form-check form-switch form-control-lg">
+									<input class="form-check-input" disabled type="checkbox" id="switch1">
+									<label class="form-check-label" for="switch1">Kapcsoló</label>
+								</div>
+							</td>
+							<td class = "text-center">
+								<a type="button" class="btn btn-warning" href="modify.html"><i class="fas fa-edit"></i></a>&nbsp;
+								<a type="button" class="btn btn-danger" href="delete.html"><i class="fas fa-trash"></i></a>
+							</td>						
+						</tr>
+					</table>
+					
+				</div>
+			</div>
+		</div><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	</body>
+</html>
