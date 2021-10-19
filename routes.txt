@@ -1,0 +1,31 @@
+SmartHome vezérlő
+index.html - Megjelenik a kapcsolók listája
+modify.html - Egy meglévő kapcsolót itt át lehet nevezni, vagy az azonosítóját módosítani lehet
+sleep.html - az alvó időszakok szabályainak a kialakításár. Megjelennek a meglévő alvó időszak szabályok
+newRule.html - Új alvó mód szabály hozzákötése egy meglévő eszközhöz
+newItem.html - Új kapcsoló felvétele a rendszerbe (id, név, típus)
+delete.html - Meglévő kapcsoló törlése (és a hozzá tartozó szabályok törlése)
+
+Routing
+
+GET / - index.html
+
+GET  /dev/mod/:deviceID          - modify.html
+POST /dev/mod/:deviceID          - ellenőrizzük, hogy ID, név nem üres
+
+GET  /dev/add/                   - newItem.html
+POST /dev/add/                   - newItem.html -> Id, eszköznév, típus meglétének ellenőrzése
+
+GET  /dev/remove/:switchID       - Kapcsoló eltávolítása
+POST /dev/remove/:switchID       - ell. ID nem üres, kapcsoló eltávolítása
+
+GET  /rule/                      - sleep.html (szabályok listázása)
+POST /rule/mod/:ruleID           - sleep.html (ell. mezők nem üresek-e)
+
+GET  /rule/add                   - newRule.html
+
+GET  /rule/remove/:ruleID        - Alvó mód törlése
+
+
+
+
