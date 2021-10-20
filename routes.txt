@@ -6,6 +6,28 @@ newRule.html - Új alvó mód szabály hozzákötése egy meglévő eszközhöz
 newItem.html - Új kapcsoló felvétele a rendszerbe (id, név, típus)
 delete.html - Meglévő kapcsoló törlése (és a hozzá tartozó szabályok törlése)
 
+middlewares/auth/
+    authMW
+    handleWrongPassMW(get paraméter)
+    checkPassMW
+    logoutMW
+
+middlewares/switch/
+    getSwitchesMW
+    getSwitchMW
+    saveSwitchMW
+    delSwitchMW
+
+middlewares/rule/
+    getRulesMW
+    getRuleMW
+    delRuleMW
+    saveRuleMW
+
+middlewares/common/
+    renderMW
+
+
 Routing
 
 GET / - ?hiba=invalidIdOrPw
@@ -13,43 +35,52 @@ GET / - ?hiba=invalidIdOrPw
             getSwitchesMW()
             renderMW(index.html)
 
-GET  /login/
+GET,POST  /login/
+            checkPassMW()
             handleWrongPassMW(get paraméter)
             renderMW(login.html)
-POST /login/
-            checkPassMW()
 
-GET  /dev/mod/:deviceID          - modify.html
-            authMW()
-            renderMW(modify.html)
-POST /dev/mod/:deviceID          - ellenőrizzük, hogy ID, név nem üres
-            authMW()
 
-GET  /dev/add/                   - newItem.html
+GET,POST  /dev/add/              - newItem.html
             authMW()
+            saveSwitchMW()       - newItem.html -> Id, eszköznév, típus meglétének ellenőrzése
+                if(typeof req.body.name==='undefined'){return next(); }
             renderMW(newItem.html)
-POST /dev/add/                   - newItem.html -> Id, eszköznév, típus meglétének ellenőrzése
-            authMW()
-            saveSwitchMW()
 
-GET  /dev/remove/:switchID       - Kapcsoló eltávolítása, ell. ID nem üres, kapcsoló eltávolítása
+GET,POST   /dev/mod/:devID          - modify.html
             authMW()
+            getSwitchMW()
+            saveSwitchMW()       - ellenőrizzük, hogy ID, név nem üres
+            renderMW(modify.html)
+
+GET  /dev/remove/:devID       - Kapcsoló eltávolítása, ell. ID nem üres, kapcsoló eltávolítása
+            authMW()
+            getSwitchMW()
             delSwitchMW()        - tovább irányítom a kapcsolók listázására (index.html => / )
 
 GET  /rule/                      - sleep.html (szabályok listázása)
             authMW()
+            getRulesMW()
+            renderMW(sleep.html)
+
 POST /rule/mod/:ruleID           - sleep.html (ell. mezők nem üresek-e)
             authMW()
+            getRuleMW()
+            saveRuleMW()       - ellenőrizzük, hogy megvan-e minden adat
+            renderMW(sleep.html)
 
-GET  /rule/add                   - newRule.html
+GET,POST  /rule/add                   - newRule.html
             authMW()
-POST /rule/add                   - newRule.html
-            authMW()
+            saveRuleMW()
+            renderMW(newRule.html)
 
 GET  /rule/remove/:ruleID        - Alvó mód törlése
             authMW()
+            getRuleMW()
+            delRuleMW()
 
 GET  /logout/                    - Kijelentkezés a fiókból
+            logoutMW()
 
 
 
