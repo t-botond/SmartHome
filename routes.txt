@@ -8,23 +8,48 @@ delete.html - Meglévő kapcsoló törlése (és a hozzá tartozó szabályok t�
 
 Routing
 
-GET / - index.html
+GET / - ?hiba=invalidIdOrPw
+            authMW()
+            getSwitchesMW()
+            renderMW(index.html)
+
+GET  /login/
+            handleWrongPassMW(get paraméter)
+            renderMW(login.html)
+POST /login/
+            checkPassMW()
 
 GET  /dev/mod/:deviceID          - modify.html
+            authMW()
+            renderMW(modify.html)
 POST /dev/mod/:deviceID          - ellenőrizzük, hogy ID, név nem üres
+            authMW()
 
 GET  /dev/add/                   - newItem.html
+            authMW()
+            renderMW(newItem.html)
 POST /dev/add/                   - newItem.html -> Id, eszköznév, típus meglétének ellenőrzése
+            authMW()
+            saveSwitchMW()
 
-GET  /dev/remove/:switchID       - Kapcsoló eltávolítása
-POST /dev/remove/:switchID       - ell. ID nem üres, kapcsoló eltávolítása
+GET  /dev/remove/:switchID       - Kapcsoló eltávolítása, ell. ID nem üres, kapcsoló eltávolítása
+            authMW()
+            delSwitchMW()        - tovább irányítom a kapcsolók listázására (index.html => / )
 
 GET  /rule/                      - sleep.html (szabályok listázása)
+            authMW()
 POST /rule/mod/:ruleID           - sleep.html (ell. mezők nem üresek-e)
+            authMW()
 
 GET  /rule/add                   - newRule.html
+            authMW()
+POST /rule/add                   - newRule.html
+            authMW()
 
 GET  /rule/remove/:ruleID        - Alvó mód törlése
+            authMW()
+
+GET  /logout/                    - Kijelentkezés a fiókból
 
 
 
