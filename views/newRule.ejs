@@ -1,0 +1,37 @@
+<%- include('header',{signin: ""}) -%>
+<%- include('menu', {page:"sleep"}) -%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>Új szabály</h2>
+        </div>
+    </div>
+    <div class="row mx-auto" style="width: 400px;">
+        <form action="/rule/add" method="POST" >
+            <div class="col-md-12 mb-3">
+                <label for="devices">Eszköz azonosító</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupPrepend">Eszköz neve</span>
+                    </div>
+
+                    <select name="days" id="devices" class="form-select">
+                        <option value="0" selected>Válaszd ki az eszközt</option>
+                        <option value="0xff1c6a">Hálószoba</option>
+                        <option value="0xff1c6a">Asztal</option>
+                        <option value="0xff1c6a">Földgömb</option>
+                        <option value="0xff1c6a">Érzékelő</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="text-center">
+                    <button class="btn btn-primary " type="submit">Hozzáadás</button>
+                    <a class="btn btn-secondary" href="/rule">Mégsem</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<%- include('footer') -%>

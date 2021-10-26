@@ -14,10 +14,7 @@ const saveSwitchMW = require('../middlewares/switch/saveSwitchMW');
 
 module.exports = function (app) {
     const objRepo = {};
-    app.get('/',
-        authMW(objRepo),
-        getSwitchesMW(objRepo),
-        renderMW(objRepo, 'index'));
+
     app.use('/login',
         checkPassMW(objRepo),
         handleWrongPassMW(objRepo),
@@ -26,6 +23,9 @@ module.exports = function (app) {
         authMW(objRepo),
         saveSwitchMW(objRepo),
         renderMW(objRepo, 'newItem'));
+    app.get('/dev/mod',
+        authMW(objRepo),
+        renderMW(objRepo, 'modify'));
     app.use('/dev/remove/:devID',
         authMW(objRepo),
         getSwitchMW(objRepo),
@@ -50,7 +50,10 @@ module.exports = function (app) {
     app.get('/logout',
         logoutMW(objRepo));
 
-
+    app.get('/',
+        authMW(objRepo),
+        getSwitchesMW(objRepo),
+        renderMW(objRepo, 'index'));
 
 
 }

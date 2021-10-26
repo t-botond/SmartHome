@@ -1,13 +1,19 @@
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'ejs');
+
 app.use(express.static('static'));
 
 //Load routing
 require('./route/index')(app);
 
-const port = 3000
+app.use((err, req, res, next) => {
+	res.end('Problem...');
+	console.log(err);
+});
 
-var server = app.listen(port, function () {
+const port = 3000
+app.listen(port, function () {
 	console.log("On: "+port);
 });

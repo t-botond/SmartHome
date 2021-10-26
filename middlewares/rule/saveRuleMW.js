@@ -6,6 +6,9 @@
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
+        if (req.method == "POST") {
+            res.redirect('/rule/');
+        }
         next();
     };
 };
