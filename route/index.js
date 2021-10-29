@@ -26,10 +26,12 @@ module.exports = function (app) {
     app.get('/dev/mod',
         authMW(objRepo),
         renderMW(objRepo, 'modify'));
+
     app.use('/dev/remove/:devID',
         authMW(objRepo),
         getSwitchMW(objRepo),
-        delSwitchMW(objRepo, 'newItem'));
+        delSwitchMW(objRepo, 'delete'));
+
     app.get('/rule',
         authMW(objRepo),
         getRulesMW(objRepo),
