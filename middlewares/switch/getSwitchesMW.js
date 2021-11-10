@@ -5,6 +5,14 @@
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
+
+        //Próbaadatok
+        res.locals.arr=[
+                {name: "Asztal", id: "devID1"},
+                {name: "Lámpa", id: "devID2"},
+                {name: "Földgömb", id:"devID3" , color: "#199CC8"},
+                {name: "Érzékelő", id:"devID4" , sensor: true}
+        ];
         next();
     };
 };

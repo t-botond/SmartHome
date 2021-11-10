@@ -5,6 +5,6 @@
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-        next();
+        return res.redirect('/?action=rule_deleted');
     };
 };

@@ -7,7 +7,8 @@
 module.exports = function (objectrepository) {
     return function (req, res, next) {
         if (req.method == "POST") {
-            res.redirect('/rule/');
+            //TODO adatbázis művelet
+            return res.redirect('/rule/');
         }
         next();
     };

@@ -5,7 +5,6 @@
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-        console.log("Delete");
-        next();
+        return res.redirect('/?action=dev_deleted');
     };
 };

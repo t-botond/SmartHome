@@ -11,20 +11,34 @@ const delSwitchMW = require('../middlewares/switch/delSwitchMW');
 const getSwitchesMW = require('../middlewares/switch/getSwitchesMW');
 const getSwitchMW = require('../middlewares/switch/getSwitchMW');
 const saveSwitchMW = require('../middlewares/switch/saveSwitchMW');
+const modSwitchMW = require('../middlewares/switch/modSwitchMW');
+
+
+const ruleModel = require('../models/rule');
+const switchModel = require('../models/switch');
+const userMode = require('../models/user');
 
 module.exports = function (app) {
-    const objRepo = {};
+    const objRepo = {
+        ruleModel: ruleModel,
+        switchModel: switchModel,
+        userMode: userMode
+    };
 
     app.use('/login',
         checkPassMW(objRepo),
         handleWrongPassMW(objRepo),
         renderMW(objRepo, 'login'));
+
     app.use('/dev/add',
         authMW(objRepo),
         saveSwitchMW(objRepo),
         renderMW(objRepo, 'newItem'));
-    app.get('/dev/mod',
+
+
+    app.use('/dev/mod/:modID',
         authMW(objRepo),
+        modSwitchMW(objRepo),
         renderMW(objRepo, 'modify'));
 
     app.use('/dev/remove/:devID',
@@ -43,6 +57,7 @@ module.exports = function (app) {
         renderMW(objRepo, 'sleep'));
     app.use('/rule/add',
         authMW(objRepo),
+        getRulesMW(objRepo),
         saveRuleMW(objRepo),
         renderMW(objRepo, 'newRule'));
     app.get('/rule/remove/:ruleID',
@@ -52,7 +67,7 @@ module.exports = function (app) {
     app.get('/logout',
         logoutMW(objRepo));
 
-    app.get('/',
+    app.use('/',
         authMW(objRepo),
         getSwitchesMW(objRepo),
         renderMW(objRepo, 'index'));

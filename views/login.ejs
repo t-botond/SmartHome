@@ -1,13 +1,13 @@
 <%- include('header',{signin: '<link href="/css/signin.css" rel="stylesheet">'}) -%>
     <div class="text-center">
-        <form class="form-signin" action="/" method="GET">
+        <form class="form-signin" method="GET">
             <i class="fas fa-home fa-5x" aria-hidden="true" ></i>
             <h1 class="h3 mb-3 font-weight-normal">Bejelentkezés</h1>
             <label for="inputEmail" class="sr-only">Email cím</label>
-            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email cím" required autofocus>
+            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email cím" autocomplete="off" required autofocus>
             <label for="inputPassword" class="sr-only">Jelszó</label>
             <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Jelszó" required>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Bejelentkezés</button>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Bejelentkezés" />
         </form>
     </div>
 <%- include('footer') -%>

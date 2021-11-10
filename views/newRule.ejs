@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="row mx-auto" style="width: 400px;">
-        <form action="/rule/add" method="POST" >
+        <form action="/rule/add" method="POST">
             <div class="col-md-12 mb-3">
                 <label for="devices">Eszköz azonosító</label>
                 <div class="input-group">
@@ -17,11 +17,12 @@
                     </div>
 
                     <select name="days" id="devices" class="form-select">
-                        <option value="0" selected>Válaszd ki az eszközt</option>
-                        <option value="0xff1c6a">Hálószoba</option>
-                        <option value="0xff1c6a">Asztal</option>
-                        <option value="0xff1c6a">Földgömb</option>
-                        <option value="0xff1c6a">Érzékelő</option>
+
+                        <%
+                        for( key in arr){ var item = arr[key]; %>
+                            <option value="<%= item.id %>" > <%= item.name %> </option>
+                        <% } %>
+
                     </select>
                 </div>
             </div>

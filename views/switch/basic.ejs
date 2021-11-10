@@ -1,0 +1,27 @@
+<div class="col-lg-3 col-md-6 border rounded">
+    <table class="table">
+        <tr>
+            <td  class = "text-center" colspan="2">
+                <h3>
+                    <%- item.sensor == undefined ? "<i class=\"far fa-lightbulb\"></i>" : "<i class=\"fas fa-running\"></i>" %>
+                    <%= item.name %>
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td class = "text-center">
+                <div class="form-check form-switch form-control-lg">
+                    <input class="form-check-input" type="checkbox" onchange="sendRequestID(this)" id="<%= item.id %>">
+                    <label class="form-check-label" for="switch2">Kapcsoló</label>
+                </div>
+            </td>
+            <td class = "text-center">
+                <a type="button" class="btn btn-warning" href="/dev/mod/<%= item.id %>"><i class="fas fa-edit"></i></a>&nbsp;
+                <a type="button" class="btn btn-danger" href="/dev/remove/<%= item.id %>"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+        <% if(item.color != undefined){ %>
+            <%- include('colorful', { item }); %>
+        <% } %>
+    </table>
+</div>
