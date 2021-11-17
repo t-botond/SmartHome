@@ -12,6 +12,7 @@ const getSwitchesMW = require('../middlewares/switch/getSwitchesMW');
 const getSwitchMW = require('../middlewares/switch/getSwitchMW');
 const saveSwitchMW = require('../middlewares/switch/saveSwitchMW');
 const modSwitchMW = require('../middlewares/switch/modSwitchMW');
+const regMW = require('../middlewares/auth/regMW');
 
 
 const ruleModel = require('../models/rule');
@@ -66,11 +67,15 @@ module.exports = function (app) {
         delRuleMW(objRepo, 'sleep'));
     app.get('/logout',
         logoutMW(objRepo));
-
+    app.use('/reg',
+        regMW(objRepo),
+        renderMW(objRepo, 'reg')
+        );
     app.use('/',
         authMW(objRepo),
         getSwitchesMW(objRepo),
         renderMW(objRepo, 'index'));
+
 
 
 }

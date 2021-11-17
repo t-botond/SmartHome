@@ -1,3 +1,4 @@
+/*
 const SwitchModel= require('./models/user');
 const Rule = require('./models/rule');
 const Switch = require('./models/switch');
@@ -32,12 +33,16 @@ rule1._devID=switch1;
 rule1.save((err) =>{
 	console.log(err);
 });
-
+*/
 
 var express = require('express');
 var app = express();
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 
 app.use(express.static('static'));
 
