@@ -1,28 +1,28 @@
-<form method="POST" action="/rule/mod/<%= item._id %>">
+<form method="GET" action="/rule/mod/<%= item._id %>">
     <tr>
         <td>
             <%= item._devID.name %>
         </td>
         <td>
             <div class="form-check form-switch form-control-lg">
-                <input class="form-check-input" type="checkbox" <%= item.isActice ? "checked": "" %> id="<%= item.id %>">
+                <input name="state" class="form-check-input" type="checkbox" <%= item.state ? "checked": "" %> id="<%= item.id %>">
             </div>
         </td>
         <td>
-            <select name="days" id="startDay1" class="form-select">
+            <select name="begDay" id="startDay1" class="form-select">
                 <%
                     const days = ["Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat", "Vasárnap"];
                     for(var i=0; i<7;++i){ %>
-                        <option value="<%= i %>" <%= i== item.begDay ? "selected": "" %>> <%= days[i] %> </option>
+                        <option value="<%= i %>" <%= days[i] === item.begDay ? "selected": "" %>> <%= days[i] %> </option>
                 <% } %>
             </select>
             <input type="time" name="kezdo" value="<%= item.begTime %>" class="form-select"/>
         </td>
         <td>
-            <select name="days" id="endDay1" class="form-select">
+            <select name="endDay" id="endDay1" class="form-select">
                 <%
                 for(var i=0; i<7;++i){ %>
-                    <option value="<%= i %>" <%= i== item.endDay ? "selected": "" %>> <%= days[i] %> </option>
+                    <option value="<%= i %>" <%= days[i] === item.endDay ? "selected": "" %>> <%= days[i] %> </option>
                 <% } %>
             </select>
             <input type="time" name="veg"  value="<%= item.endTime %>" class="form-select"/>

@@ -5,7 +5,16 @@
 module.exports = function (objectrepository) {
     return function (req, res, next) {
         if (req.method == "GET") {
-            next();
+            if(typeof  req.query.state !== 'undefined')
+                res.locals.oneSwitch.state = req.query.state === 'on';
+
+            if(typeof req.query.color !== 'undefined')
+                res.locals.oneSwitch.color = '#'+req.query.color;
+
+            res.locals.oneSwitch.save(err => {
+                if (err) return next(err);
+                return next();
+            });
         }
         if (req.method == "POST") {
 
@@ -15,9 +24,7 @@ module.exports = function (objectrepository) {
                 res.locals.oneSwitch.azon = req.body.devID;
 
             res.locals.oneSwitch.save(err => {
-                if (err) {
-                    return next(err);
-                }
+                if (err) return next(err);
                 return res.redirect('/');
             });
         }

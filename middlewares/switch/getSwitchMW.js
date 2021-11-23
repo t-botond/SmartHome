@@ -9,7 +9,6 @@ module.exports = function (objectrepository) {
     const SwitchModel = requireOption(objectrepository, 'switchModel');
 
     return function (req, res, next) {
-        console.log(req.params.modID);
         SwitchModel.findOne({_id: req.params.modID}, (err, sw) => {
             if (err || !sw) return next(err);
             res.locals.oneSwitch = sw;

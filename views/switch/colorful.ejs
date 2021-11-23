@@ -3,6 +3,6 @@
         <label for="exampleColorInput" class="form-label">Szín választó</label>
     </td>
     <td>
-        <input type="color" class="form-control form-control-color" id="<%= item.id %>" value="<%= item.color %>" title="Válassz ki egy színt">
+        <input type="color" class="form-control form-control-color" id="<%= item.id %>" value="<%= item.color %>" title="Válassz ki egy színt" onchange="changeColor(this)">
     </td>
 </tr>

@@ -52,7 +52,7 @@ module.exports = function (app) {
         authMW(objRepo),
         getRulesMW(objRepo),
         renderMW(objRepo, 'sleep'));
-    app.post('/rule/mod/:ruleID',
+    app.use('/rule/mod/:ruleID',
         authMW(objRepo),
         getRuleMW(objRepo),
         saveRuleMW(objRepo),

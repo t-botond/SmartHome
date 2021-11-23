@@ -1,13 +1,21 @@
-function sendRequestID(id){
+function xhReq(rq){
     let xhttp = new XMLHttpRequest();
-    const state=id.checked ? "on":"off";
-    var req ="/dev/mod/:"+id.getAttribute('id')+"/?state="+state;
-    xhttp.open("GET",req, true);
+    xhttp.open("GET",rq, true);
     xhttp.send();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status==200){
-            console.log("GET: "+ req);
+            console.log("ok");
         }
     }
 }
-//sendRequestID("/dash/smart_home/conf/core.php?id="+id+"&sleep_mode=off&"+addon,id);
+
+function sendRequestID(id){
+    const state=id.checked ? "on":"off";
+    let req ="/dev/mod/"+id.getAttribute('id')+"/?state="+state;
+    xhReq(req);
+}
+function changeColor(id){
+    let req ="/dev/mod/"+id.getAttribute('id')+"/?color="+id.value.substr(1);
+    console.log(req);
+    xhReq(req);
+}
