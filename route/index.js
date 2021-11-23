@@ -39,10 +39,11 @@ module.exports = function (app) {
 
     app.use('/dev/mod/:modID',
         authMW(objRepo),
+        getSwitchMW(objRepo),
         modSwitchMW(objRepo),
         renderMW(objRepo, 'modify'));
 
-    app.use('/dev/remove/:devID',
+    app.use('/dev/remove/:modID',
         authMW(objRepo),
         getSwitchMW(objRepo),
         delSwitchMW(objRepo, 'delete'));
@@ -59,6 +60,7 @@ module.exports = function (app) {
     app.use('/rule/add',
         authMW(objRepo),
         getRulesMW(objRepo),
+        getSwitchesMW(objRepo),
         saveRuleMW(objRepo),
         renderMW(objRepo, 'newRule'));
     app.get('/rule/remove/:ruleID',

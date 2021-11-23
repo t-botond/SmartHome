@@ -8,14 +8,14 @@
 				</div>
 			</div>
 			<div class="row mx-auto" style="width: 400px;">
-				<form class="needs-validation" novalidate>
+				<form class="needs-validation" method="post" novalidate>
 					<div class="col-md-12 mb-3">
 						<label for="validationCustomUsername">Eszköz azonosító</label>
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text" id="inputGroupPrepend">ID</span>
 							</div>
-							<input type="text" class="form-control" id="validationCustomUsername" placeholder="Azonosító" aria-describedby="inputGroupPrepend" autocomplete="off" required>
+							<input name="devID" type="text" class="form-control" id="validationCustomUsername" placeholder="Azonosító" aria-describedby="inputGroupPrepend" autocomplete="off" required>
 							<div class="invalid-feedback">
 								Add meg az eszköz azonosítót!
 							</div>
@@ -24,7 +24,7 @@
 					<div class="form-row">
 						<div class="col-md-12 mb-3">
 							<label for="validationCustom02">Eszköz neve</label>
-							<input type="text" class="form-control" id="validationCustom02" placeholder="Device Name" autocomplete="off" required>
+							<input name="devName" type="text" class="form-control" id="validationCustom02" placeholder="Device Name" autocomplete="off" required>
 							<div class="valid-feedback">
 								Jónak tűnik!
 							</div>
@@ -32,8 +32,7 @@
 					</div>
 					<div class="form-row">
 						<div class="col-md-12 mb-3">
-							<select class="form-select" aria-label="Default select example">
-							  <option selected>Típus kiválasztása</option>
+							<select name="devType" class="form-select" aria-label="Default select example">
 							  <option value="1">Lámpa</option>
 							  <option value="2">Érzékelő</option>
 							  <option value="3">Színes lámpa</option>

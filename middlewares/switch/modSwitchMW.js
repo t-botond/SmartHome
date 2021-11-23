@@ -5,12 +5,21 @@
 module.exports = function (objectrepository) {
     return function (req, res, next) {
         if (req.method == "GET") {
-            res.locals.item = {id: req.params.modID };
+            next();
         }
         if (req.method == "POST") {
-            //TODO mentünk az adatbázisba
-            return res.redirect('/');
+
+            if (typeof req.body.devName !== 'undefined' && req.body.devName.length > 0)
+                res.locals.oneSwitch.name = req.body.devName;
+            if(typeof req.body.devID !== 'undefined' && req.body.devID.length > 0)
+                res.locals.oneSwitch.azon = req.body.devID;
+
+            res.locals.oneSwitch.save(err => {
+                if (err) {
+                    return next(err);
+                }
+                return res.redirect('/');
+            });
         }
-        next();
     };
 };

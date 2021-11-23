@@ -6,7 +6,8 @@ const Switch = db.model('Switch', {
     name: String,
     state: Boolean,
     color: String,
-    sensor: Boolean
+    sensor: Boolean,
+    azon : String
 });
 
 module.exports=Switch;

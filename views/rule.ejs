@@ -1,7 +1,7 @@
-<form method="POST" action="/rule/mod/:ruleID">
+<form method="POST" action="/rule/mod/<%= item._id %>">
     <tr>
         <td>
-            <%= item.name %>
+            <%= item._devID.name %>
         </td>
         <td>
             <div class="form-check form-switch form-control-lg">

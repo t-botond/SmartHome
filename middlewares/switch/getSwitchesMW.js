@@ -3,16 +3,18 @@
  * Az eredményt mentjük a res.locals.dev-be
  */
 
-module.exports = function (objectrepository) {
-    return function (req, res, next) {
+const requireOption = require('../requireOption');
 
-        //Próbaadatok
-        res.locals.arr=[
-                {name: "Asztal", id: "devID1"},
-                {name: "Lámpa", id: "devID2"},
-                {name: "Földgömb", id:"devID3" , color: "#199CC8"},
-                {name: "Érzékelő", id:"devID4" , sensor: true}
-        ];
-        next();
+module.exports = function (objectrepository) {
+
+    const SwitchModel = requireOption(objectrepository, 'switchModel');
+
+    return function (req, res, next) {
+        SwitchModel.find({}, (err, switches) => {
+            if (err) return next(err);
+            res.locals.SWarr = switches;
+
+            return next();
+        });
     };
 };
