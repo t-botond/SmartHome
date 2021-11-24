@@ -1,7 +1,6 @@
 const authMW = require('../middlewares/auth/authMW');
 const checkPassMW = require('../middlewares/auth/checkPassMW');
 const logoutMW = require('../middlewares/auth/logoutMW');
-const handleWrongPassMW = require('../middlewares/auth/handleWrongPassMW');
 const renderMW= require('../middlewares/common/renderMW');
 const delRuleMW = require('../middlewares/rule/delRuleMW');
 const getRuleMW = require('../middlewares/rule/getRuleMW');
@@ -17,18 +16,17 @@ const regMW = require('../middlewares/auth/regMW');
 
 const ruleModel = require('../models/rule');
 const switchModel = require('../models/switch');
-const userMode = require('../models/user');
+const userModel = require('../models/user');
 
 module.exports = function (app) {
     const objRepo = {
         ruleModel: ruleModel,
         switchModel: switchModel,
-        userMode: userMode
+        userModel: userModel
     };
 
     app.use('/login',
         checkPassMW(objRepo),
-        handleWrongPassMW(objRepo),
         renderMW(objRepo, 'login'));
 
     app.use('/dev/add',

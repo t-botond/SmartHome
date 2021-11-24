@@ -5,6 +5,8 @@
 
 module.exports = function (objectrepository) {
     return function (req, res, next) {
-        return res.redirect('/login');
+        req.session.destroy(err=>{
+            return res.redirect('/login/?err=logout');
+        });
     };
 };

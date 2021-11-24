@@ -3,6 +3,24 @@
         <form class="form-signin" method="POST">
             <i class="fas fa-home fa-5x" aria-hidden="true" ></i>
             <h1 class="h3 mb-3 font-weight-normal">Bejelentkezés</h1>
+            <%
+                if(typeof login !=='undefined' &&  typeof login.err !=='undefined' && login.err === 'noUserFound'){
+                    %>
+                    <div class="alert alert-danger" role="alert">
+                        Rossz felhasználónév vagy jelszó!
+                    </div>
+                    <%
+                }
+                if(typeof login !=='undefined' &&  typeof login.err !=='undefined' && login.err === 'suc'){
+                    %>
+                    <div class="alert alert-success" role="alert">
+                        Sikeres regisztráció!
+                    </div>
+                    <%
+                }
+
+            %>
+
             <label for="inputEmail" class="sr-only">Email cím</label>
             <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email cím" autocomplete="off" required autofocus>
             <label for="inputPassword" class="sr-only">Jelszó</label>
