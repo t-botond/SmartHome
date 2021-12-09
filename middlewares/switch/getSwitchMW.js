@@ -12,7 +12,6 @@ module.exports = function (objectrepository) {
         SwitchModel.findOne({_id: req.params.modID}, (err, sw) => {
             if (err || !sw) return next(err);
             res.locals.oneSwitch = sw;
-
             return next();
         });
     };
