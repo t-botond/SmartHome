@@ -1,10 +1,10 @@
 let expect = require('chai').expect;
-let delRuleMW = require('../../middlewares/rule/delRuleMW');
+let regMW = require('../../middlewares/auth/regMW');
 
-describe('delRuleMW test' , function (){
-    it('Nem kaptunk ID-t', function (done){
+describe('RegMW test' , function (){
+    it('GET kérést kapunk', function (done){
         let req={
-            params:{}
+            method: "GET"
         };
         let res={
             redirectURL:"",
@@ -12,22 +12,25 @@ describe('delRuleMW test' , function (){
                 this.redirectURL=url;
             },
             locals: {
-                oneRule:  {
-                    remove: function (cb) {
-                        cb(null);
-                    }
-                }
+
             }
         };
 
-        let objRepo={}
+        let objRepo={
+            userModel: function () {
+                return {
+                    save:(cb)=>{
+                        cb(null);
+                        done();
+                    }
+                }
+            }
+        }
 
-        let mw= delRuleMW(objRepo);
+        let mw= regMW(objRepo);
         mw(req,res,function (err){
             expect(err).to.be.undefined;
+            done();
         });
-
-        expect(res.redirectURL).to.be.eql("/rule/?err=Sikertelen_torles");
-        done();
     });
 });

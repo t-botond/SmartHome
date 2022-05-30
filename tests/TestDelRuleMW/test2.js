@@ -16,7 +16,7 @@ describe('delRuleMW test' , function (){
             locals: {
                 oneRule:{
                     remove : function (cb) {
-                        cb(null);
+                        cb(false);
                     }
                 }
             }
@@ -26,9 +26,11 @@ describe('delRuleMW test' , function (){
 
         let mw= delRuleMW(objRepo);
         mw(req,res,function (err){
+            expect(err).to.be.undefined;
         });
 
         expect(res.redirectURL).to.be.eql("/rule/?action=rule_deleted");
         done();
+
     });
 });
